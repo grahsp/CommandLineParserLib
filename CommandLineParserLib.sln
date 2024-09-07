@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineParserLib", "CommandLineParserLib\CommandLineParserLib.csproj", "{4EB4F555-D09F-4888-8566-BFFD62A63FD0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapCommands", "MapCommands\MapCommands.csproj", "{C313F69A-C82F-4A31-8E84-3373981E8887}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4EB4F555-D09F-4888-8566-BFFD62A63FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EB4F555-D09F-4888-8566-BFFD62A63FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EB4F555-D09F-4888-8566-BFFD62A63FD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C313F69A-C82F-4A31-8E84-3373981E8887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C313F69A-C82F-4A31-8E84-3373981E8887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C313F69A-C82F-4A31-8E84-3373981E8887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C313F69A-C82F-4A31-8E84-3373981E8887}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
