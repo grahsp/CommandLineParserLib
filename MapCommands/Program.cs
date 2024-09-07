@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text.Json;
 using CommandLineParserLib;
 
 namespace MapCommands
@@ -17,30 +18,50 @@ namespace MapCommands
             var assembliesDirectory = args[1];
 
             var assemblyFiles = Directory.GetFiles(assembliesDirectory, "*.dll");
-            var commands = new List<string>();
+            var commands = new List<CommandInfo>();
 
-            foreach (var file in assemblyFiles)
+            try
             {
-                var assembly = Assembly.LoadFrom(file);
-                var types = assembly.GetTypes();
-                foreach (var type in types)
+                foreach (var file in assemblyFiles)
                 {
-                    var methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-                    foreach (var method in methods)
+                    var assembly = Assembly.LoadFrom(file);
+                    var types = assembly.GetTypes();
+                    foreach (var type in types)
                     {
-                        var attribute = method.GetCustomAttribute<CommandAttribute>();
-                        if (attribute != null)
+                        var methods = type.GetMethods(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                        foreach (var method in methods)
                         {
-                            var paramInfo = method.GetParameters();
-                            var paramTypes = string.Join(",", paramInfo.Select(p => p.ParameterType.FullName));
-                            var commandInfo = $"{attribute.Name.ToLower()}:{type.FullName}.{method.Name}({paramTypes})";
-                            commands.Add(commandInfo);
+                            var attribute = method.GetCustomAttribute<CommandAttribute>();
+                            if (attribute != null)
+                            {
+                                commands.Add(new CommandInfo() {
+                                    Namespace = type.Namespace ?? string.Empty,
+                                    Class = type.Name,
+                                    Method = method.Name
+                                });
+                            }
                         }
                     }
                 }
-            }
 
-            File.WriteAllLines(outputFile, commands);
+
+                var json = JsonSerializer.Serialize(new { Commands = commands }, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(outputFile, json);
+
+                Console.WriteLine("Success!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occured: {ex.Message}");
+                throw;
+            }
+        }
+
+        public class CommandInfo
+        {
+            public string Namespace { get; set; } = "";
+            public string Class { get; set; } = "";
+            public string Method { get; set; } = "";
         }
     }
 }

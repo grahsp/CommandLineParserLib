@@ -11,8 +11,4 @@
     <ProjectReference Include="..\CommandLineParserLib\CommandLineParserLib.csproj" />
   </ItemGroup>
 
-  <Target Name="MapCommands" AfterTargets="Build">
-    <Exec Command="dotnet $(ProjectDir)bin\Debug\net8.0\MapCommands.dll $(ProjectDir)..\CommandLineParserLib\Commands.json $(ProjectDir)..\Demo\bin\Debug\net8.0" />
-  </Target>
-
 </Project>

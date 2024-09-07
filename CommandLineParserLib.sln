@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLineParserLib", "Com
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapCommands", "MapCommands\MapCommands.csproj", "{C313F69A-C82F-4A31-8E84-3373981E8887}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{6DB30232-C507-4331-9E68-F3182937E337}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C313F69A-C82F-4A31-8E84-3373981E8887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C313F69A-C82F-4A31-8E84-3373981E8887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C313F69A-C82F-4A31-8E84-3373981E8887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB30232-C507-4331-9E68-F3182937E337}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB30232-C507-4331-9E68-F3182937E337}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB30232-C507-4331-9E68-F3182937E337}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB30232-C507-4331-9E68-F3182937E337}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
