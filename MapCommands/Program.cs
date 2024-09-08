@@ -18,7 +18,7 @@ namespace MapCommands
             var assembliesDirectory = args[1];
 
             var assemblyFiles = Directory.GetFiles(assembliesDirectory, "*.dll");
-            var commands = new List<CommandInfo>();
+            var commands = new Dictionary<string, CommandInfo>();
 
             try
             {
@@ -34,7 +34,8 @@ namespace MapCommands
                             var attribute = method.GetCustomAttribute<CommandAttribute>();
                             if (attribute != null)
                             {
-                                commands.Add(new CommandInfo() {
+                                commands.Add(attribute.Name, new CommandInfo() {
+                                    Assembly = type.Assembly.GetName().Name ?? string.Empty,
                                     Namespace = type.Namespace ?? string.Empty,
                                     Class = type.Name,
                                     Method = method.Name
@@ -45,7 +46,7 @@ namespace MapCommands
                 }
 
 
-                var json = JsonSerializer.Serialize(new { Commands = commands }, new JsonSerializerOptions { WriteIndented = true });
+                var json = JsonSerializer.Serialize(commands, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(outputFile, json);
 
                 Console.WriteLine("Success!");
@@ -55,13 +56,6 @@ namespace MapCommands
                 Console.WriteLine($"An error occured: {ex.Message}");
                 throw;
             }
-        }
-
-        public class CommandInfo
-        {
-            public string Namespace { get; set; } = "";
-            public string Class { get; set; } = "";
-            public string Method { get; set; } = "";
         }
     }
 }

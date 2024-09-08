@@ -1,14 +1,14 @@
 {
-  "Commands": [
-    {
-      "Namespace": "Demo",
-      "Class": "Program",
-      "Method": "Test"
-    },
-    {
-      "Namespace": "Demo",
-      "Class": "Program",
-      "Method": "Awesome"
-    }
-  ]
+  "test": {
+    "Assembly": "Demo",
+    "Namespace": "Demo",
+    "Class": "Program",
+    "Method": "Test"
+  },
+  "awesome": {
+    "Assembly": "Demo",
+    "Namespace": "Demo",
+    "Class": "Program",
+    "Method": "Awesome"
+  }
 }

@@ -2,21 +2,22 @@
 
 namespace Demo
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            var parser = new CommandLineParser(args);
+
         }
 
         [Command("test")]
-        public void Test(string name)
+        public static void Test()
         {
-            Console.WriteLine("Helsfgalo, " + name);
+            Console.WriteLine("Helsfgalo, " + "Joe");
         }
         
         [Command("awesome")]
-        public void Awesome(string name, int age, bool married)
+        public static void Awesome(string name, int age, bool married)
         {
             Console.WriteLine("Hello, " + name);
         }
